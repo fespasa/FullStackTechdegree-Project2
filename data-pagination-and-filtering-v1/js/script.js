@@ -65,6 +65,18 @@ const addPagination = (list) => {
    }
 
    linkList.firstElementChild.firstElementChild.classList.add('active');
+
+   linkList.addEventListener("click", (e) => {
+      const activeButton = document.querySelector('.active');
+      const clickedButton = e.target.closest('button');
+      if (activeButton && clickedButton) {
+         activeButton.classList.remove("active");
+      }
+       if (clickedButton) {
+         clickedButton.classList.add("active");
+         showPage(data, clickedButton.innerHTML);
+      }
+   })
 }
 
 
