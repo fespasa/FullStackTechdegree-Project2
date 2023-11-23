@@ -81,7 +81,7 @@ const addPagination = (list) => {
 
 /*
 Create the searchBar
-This function will create and insert/append a search bar for searching students by name
+This section will create and insert/append a search bar for searching students by name
 */
 const searchBar = `
 <label for="search" class="student-search">
@@ -91,6 +91,32 @@ const searchBar = `
 </label>
 `;
 header.insertAdjacentHTML("beforeend", searchBar);
+
+/*
+Add Search Functionality
+This function will add search functionalito to the searchBar
+*/
+const searchInput = document.querySelector('#search');
+searchInput.addEventListener('keyup', () => {
+   const searchMatches = [];
+   const input = searchInput.value.toLowerCase();
+
+   for ( i = 0; i < data.length; i++) {
+      const studentName = data[i].name.first.toLowerCase() + data[i].name.last.toLowerCase();
+      if ( studentName.includes(input)) {
+         searchMatches.push(data[i]);
+      }
+   }
+   console.log(searchMatches.length);
+   if (searchMatches.length > 0){;
+      showPage(searchMatches, 1);
+      linkList.innerHTML = "";
+      addPagination(searchMatches);
+   } else {
+      studentList.innerHTML = "<h3>No results found</h3>";
+      linkList.innerHTML = "";
+   }
+})
 
 
 // Call functions
