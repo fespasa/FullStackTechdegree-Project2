@@ -52,7 +52,22 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 
+const addPagination = (list) => {
+   const pages = Math.ceil(list.length / studentsPerPage);
+
+   for (i = 0; i < pages; i++) {
+      const html = `
+      <li>
+         <button type="button">${i + 1}</button>
+      </li>
+      `;
+      linkList.insertAdjacentHTML("beforeend", html);
+   }
+
+   linkList.firstElementChild.firstElementChild.classList.add('active');
+}
 
 
 // Call functions
 showPage(data, 1);
+addPagination(data);
