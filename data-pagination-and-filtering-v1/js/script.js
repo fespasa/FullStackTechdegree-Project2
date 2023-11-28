@@ -74,7 +74,7 @@ const addPagination = (list) => {
       }
        if (clickedButton) {
          clickedButton.classList.add("active");
-         showPage(data, clickedButton.innerHTML);
+         showPage(list, clickedButton.innerHTML);
       }
    })
 }
